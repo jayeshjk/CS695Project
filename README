@@ -1,0 +1,12 @@
+* This repo contains source code of the project created for CS695 at IITB.
+
+* For problem definition, design, experimentation etc check project report.
+
+* Following steps must be followed in order to completely run this project.
+1) Download and setup vagrant boxes at source and destination machines by referring this link: http://blog.circleci.com/checkpoint-and-restore-docker-container-with-criu/ 
+2)You should have /tmp/live-migration folder and put all this scripts inside it on both source and destination machines.
+3)In livemigration.sh edit destination IP address, username and password to enable SSH communication.
+4)Run this command "docker run --name=foo -d busybox tail -f /dev/null && docker rm -f foo" on destination vagrant box before starting live-migration
+5)Start a container at source vagrant machine using any of the given scripts such as: np.sh, fibo.sh, prime.sh, mem.sh
+6)On source machine change dir to /tmp/live-migration
+7) Run ./live_migration.sh <container-name> <source-vagrant-box-address(absolute address)> <destination-vagrant-box-address(absolute address)>
